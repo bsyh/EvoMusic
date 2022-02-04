@@ -6,7 +6,6 @@ class feature_pool:
   def new_feature(self,note,time):
     # if note exist,add time to it or create a new note
     for item in self.feature_pool:
-
       if item.note == note:
         return item.add_time(time)
     # not exist , new note 
@@ -21,9 +20,7 @@ class feature_pool:
       if item.count >= min_count:
         pool_list.append(item)
     return pool_list
-        
-        
-    
+          
     
 class feature:
   def __init__(self,note,time):
@@ -42,9 +39,18 @@ class feature:
   def get_note(self):
     return self.note
 
-import pandas as pd
 
 def containsPattern(feature_pool,note,time,low=3,up=5):
+  '''
+  
+  :param feature_pool:  a pool to store all features extracted
+  :param note: source note list
+  :param time: source time list
+  :param low: min length of a pattern
+  :param up:  max length of a pattern
+
+  :return: none
+  '''
     for m in range (low,up+1):
       i = 0
       while i < len(note)-m+1:
@@ -59,6 +65,9 @@ def containsPattern(feature_pool,note,time,low=3,up=5):
     # feature_pool.show_pool()
     # return dict(result)
 def make_pool(feature_dict,min_number=2):
+  '''
+  fuliter out pattern only appeatred less than min_number times
+  '''
   pool = []
   for item in feature_dict:
     if feature_dict[item] >= min_number:
@@ -67,6 +76,13 @@ def make_pool(feature_dict,min_number=2):
         
   return pool
 def compose(duraiton, pool):
+  '''
+  generate a individual by picking from the pool, add up features 
+  entill duration is stafisted( could be a bit longer)
+  :param duraiton: 
+  :param pool: 
+  :return: 
+  '''
   cur = 0
   track = feature_pool([])
   track.show_pool()
@@ -78,12 +94,16 @@ def compose(duraiton, pool):
   return track
 
 def play(track):
+  '''
+  print out a individual
+  :param track: 
+  :return: 
+  '''
   note = []
   time = []
   for item in track.feature_pool:
     note+=item.note
     time+=random.choice(item.time)
-  
   print (note)
   print(time)
   
@@ -120,7 +140,7 @@ play(x2)
 
 
 
-
+# some generated star
 # star_note = [1,1,5,5,6,6,5,-1,4,4,3,3,2,2,1,-1,5,5,4,4,3,3,2,-1,5,5,4,4,3,3,2,-1]
 # star_time = [1,1,1,1,1,1,2,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1]
 # [4, 4, 3, 3, 4, 3, 3, 2, -1, 4, 4, 3, 3, 2]
