@@ -39,8 +39,8 @@ from mido import Message
 
 
 
-from feature_extraction import feature_pool,containsPattern,compose,read_to_notes
-
+from feature_extraction import read_to_notes,containsPattern
+from util import Feature,Feature_pool
 
 
 
@@ -50,11 +50,13 @@ from feature_extraction import feature_pool,containsPattern,compose,read_to_note
 source1 = read_to_notes('2.mid')
 #read input 2
 source2 = read_to_notes('2.mid')
-
+print(source2)
 #init pool
-feature_pool = feature_pool()
-
+feature_pool = Feature_pool()
 #extract featurse
+
+containsPattern(feature_pool, source1)
+feature_pool.show_pool()
 #convert input1 and input2 to object
 
 
