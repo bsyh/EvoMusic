@@ -7,10 +7,11 @@ from Music import Music
 from Note import Note
 from Track import Track
 
-mid = MidiFile("blues/12barblues_ms.mid")
+mid = MidiFile("2.mid")
 my_music = Music()
+my_music.set_ticks_per_beat(mid.ticks_per_beat)
 for i, track in enumerate(mid.tracks):
-    # print('Track {}: {}'.format(i, track.name))
+    print('Track {}: {}'.format(i, track.name))
     new_track = Track()
     for msg in track:
         print(msg)
@@ -19,11 +20,29 @@ for i, track in enumerate(mid.tracks):
             note = int(msg.note)
             velocity = int(msg.velocity)
             tick = int(msg.time)
-            newNote = Note(channel,note,velocity,tick)
+            if msg.type == "note_off":
+                newNote = Note(channel,note,velocity,tick,False)
+            else:
+                newNote = Note(channel,note,velocity,tick,True)
+
             new_track.note_append(newNote)
 
+
     my_music.append_track(new_track)
+
+
+my_music.display()
 
 save_name = "my_music.mid"
 my_music.save_midi(save_name)
 midi_visualize(save_name)
+
+
+# mid = MidiFile(save_name)
+# my_music = Music()
+# print(save_name)
+# for i, track in enumerate(mid.tracks):
+#     print('Track {}: {}'.format(i, track.name))
+#     new_track = Track()
+#     for msg in track:
+#         print(msg)
