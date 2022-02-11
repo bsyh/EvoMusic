@@ -35,3 +35,18 @@ roll = mid.get_roll()
 
 # draw piano roll by pyplot
 mid.draw_roll()
+
+#read input 1
+#read input 2
+
+#convert input1 and input2 to object
+
+#feature extract
+
+#initliazaiton
+
+#loop of evoluation
+
+
+#output
+
