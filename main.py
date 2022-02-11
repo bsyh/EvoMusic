@@ -24,32 +24,66 @@ from mido import Message
 #
 #     mid.save('new_song.mid')
 
-mid = MidiFile("blues/12barblues_ms.mid")
+# mid = MidiFile("blues/12barblues_ms.mid")
 # mid = MidiFile("new_song.mid")
 
 # get the list of all events
 # events = mid.get_events()
 
 # get the np array of piano roll image
-roll = mid.get_roll()
+# roll = mid.get_roll()
 
 # draw piano roll by pyplot
-mid.draw_roll()
+# mid.draw_roll()
+
+
+
+
+from feature_extraction import feature_pool,containsPattern,compose,read_to_notes
+
 
 
 
 
 #read input 1
-#read input 2
 
+source1 = read_to_notes('2.mid')
+#read input 2
+source2 = read_to_notes('2.mid')
+
+#init pool
+feature_pool = feature_pool()
+
+#extract featurse
 #convert input1 and input2 to object
 
+
 #feature extract
+# feature_p = feature_pool()
+# containsPattern(feature_p,star_note,star_time,3,5)
+# min3_pool = feature_pool(feature_p.give_pool(3))
+# # min3_pool.show_pool()
+# # pool = make_pool(x)
+# 
+# x1 = compose(12,min3_pool)
+# x2 =compose(12,min3_pool)
+# x1.show_pool()
+# x2.show_pool()
+# play(x2)
 
 #initliazaiton
 
 #loop of evoluation
 
+#parent selection 
 
+#crossover
+
+#mutation
+
+
+
+
+#end loop
 #output
 
