@@ -17,23 +17,24 @@ class Music:
 
     def display(self):
         for i in range(len(self.track_list)):
-            print("Track", i)
-            print("Note:",end="\t")
+            print("Track:", i)
+            print("Note      :",end="\t")
             for j in range(len(self.track_list[i].note_list)):
                 print(self.track_list[i].note_list[j].note, end='\t\t')
             print("")
-            print("Tick:", end="\t")
+            print("Start Time:", end="\t")
             for j in range(len(self.track_list[i].note_list)):
-                print(self.track_list[i].note_list[j].tick, end='\t\t')
+                print(self.track_list[i].note_list[j].start_time, end='\t\t')
             print("")
-            print("Type:", end="\t")
+            print("Duration  :", end="\t")
             for j in range(len(self.track_list[i].note_list)):
-                print(self.track_list[i].note_list[j].type, end='\t')
+                print(self.track_list[i].note_list[j].duration, end='\t\t')
             print("")
 
             print("")
 
-
+    #TODO
+    """
     def save_midi(self,save_path = 'new_song.mid'):
         mid = MidiFile()
         for track_index in range(len(self.track_list)):
@@ -49,13 +50,15 @@ class Music:
                 tick = note.tick
                 channel = note.channel
                 if note.type:
-                    track.append(Message('note_on', channel=channel, note=note_note, velocity=velocity, time=tick))
+                    for i in note_note:
+                        track.append(Message('note_on', channel=channel, note=i, velocity=velocity, time=tick))
                 else:
-                    track.append(Message('note_off', channel=channel, note=note_note, velocity=velocity, time=tick))
+                    for i in note_note:
+                        track.append(Message('note_off', channel=channel, note=i, velocity=velocity, time=tick))
         track.append(MetaMessage('end_of_track', time=0))
         mid.ticks_per_beat=self.ticks_per_beat
         mid.save(save_path)
-
+        """
 
 if __name__ == "__main__":
 
