@@ -120,12 +120,12 @@ class Note:
     print("Note", self.channel, self.note, self.velocity, self.tick)
 
 class Track:
-    def __init__(self,note_list=[]):
-      self.note_list = note_list
+    def __init__(self,feature_list=[]):
+      self.feature_list = feature_list
       self.size = 0
 
-    def note_append(self, new_note):
-      self.note_list.append(new_note)
+    def feature_append(self, new_feature):
+      self.feature_list.append(new_feature)
       self.size += 1
 
 class Music:
@@ -142,18 +142,15 @@ class Music:
     def display(self):
       for i in range(len(self.track_list)):
         print("Track:", i)
+
         print("Note      :", end="")
-        for j in range(len(self.track_list[i].note_list)):
-          print(self.track_list[i].note_list[j].note, end='\t')
+        for j in range(len(self.track_list[i].feature_list)):
+          for k in self.track_list[i].feature_list[j]:
+            for z in k:
+              print(z.note, end=' ')
+            print(" | ",end='')
         print("")
-        print("Start Time:", end="")
-        for j in range(len(self.track_list[i].note_list)):
-          print(self.track_list[i].note_list[j].start_time, end='\t')
-        print("")
-        print("Duration  :", end="")
-        for j in range(len(self.track_list[i].note_list)):
-          print(self.track_list[i].note_list[j].duration, end='\t')
-        print("")
+
 
         print("")
 
