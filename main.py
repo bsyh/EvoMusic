@@ -39,14 +39,15 @@ from mido import Message
 
 
 
-from feature_extraction import read_to_notes,containsPattern
+from feature_extraction import read_to_notes,containsPattern,compose
 from util import Feature,Feature_pool
 
 
 
 
 #read input 1
-
+pop_num = 5
+length =30
 source1 = read_to_notes('2.mid')
 #read input 2
 source2 = read_to_notes('2.mid')
@@ -57,23 +58,13 @@ feature_pool = Feature_pool()
 
 containsPattern(feature_pool, source1)
 feature_pool.show_pool()
-#convert input1 and input2 to object
 
-
-#feature extract
-# feature_p = feature_pool()
-# containsPattern(feature_p,star_note,star_time,3,5)
-# min3_pool = feature_pool(feature_p.give_pool(3))
-# # min3_pool.show_pool()
-# # pool = make_pool(x)
-# 
-# x1 = compose(12,min3_pool)
-# x2 =compose(12,min3_pool)
-# x1.show_pool()
-# x2.show_pool()
-# play(x2)
 
 #initliazaiton
+population = []
+for i in range(pop_num):
+  population.append(compose(length, feature_pool))
+  
 
 #loop of evoluation
 
