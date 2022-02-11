@@ -40,7 +40,7 @@ def containsPattern(feature_pool,notes,low=3,up=5):
 #         pool.append(list(item))
 #         
 #   return pool
-def compose(duraiton, pool):
+def compose(length, pool):
   '''
   generate a individual by picking from the pool, add up features 
   entill duration is stafisted( could be a bit longer)
@@ -49,14 +49,15 @@ def compose(duraiton, pool):
   :return: 
   '''
   cur = 0
-  track = feature_pool([])
-  track.show_pool()
-  while cur< duraiton:
-    x = random.choice(pool.feature_pool)
-    track.feature_pool.append(x)
+  individual =[] # a list of features
+  while cur< length:
     
-    cur += x.duration
-  return track
+    x = random.choice(pool.feature_pool) #choice of feature
+    individual.append(x)
+    
+    cur += len(x.notes)
+    
+  return individual
 
 def play(track):
   '''
