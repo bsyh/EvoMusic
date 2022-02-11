@@ -3,9 +3,8 @@ from mido import MidiFile
 # from roll import MidiFile
 from mido import Message
 from midi_visualize import midi_visualize
-from Music import Music
-from Note import Note
-from Track import Track
+from util import Music,Note,Track
+
 
 mid = MidiFile("12barblues_ms.mid")
 my_music = Music()
