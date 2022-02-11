@@ -34,23 +34,28 @@
 #         print("Note", self.channel, self.note, self.velocity, self.tick)
 
 class Feature_pool:
-  def __init__(self):
-    self.feature_pool = []
-  def __init__(self, pool):
+
+  def __init__(self, pool=[]):
     self.feature_pool = pool
 
-  def new_feature(self, note, time):
+  def new_feature(self, notes):
+    '''
+    if it exists add to a feature if it not exist add it to a new feature object
+    :param notes:  a list of note objects 
+    :return: 
+    '''
+    name = [note.note for note in notes]
     # if note exist,add time to it or create a new note
     for item in self.feature_pool:
-      if item.note == note:
-        return item.add_time(time)
+      if item.name == name:
+        return item.add_phenotype(notes)
     # not exist , new note
-    new_feature = Feature(note, time)
+    new_feature = Feature(notes)
     self.feature_pool.append(new_feature)
 
   def show_pool(self):
     for item in self.feature_pool:
-      print('feature:', item.note, "  time:", item.time, 'count:', len(item.time))
+      print('feature:', item.name, 'count:', item.count)
 
   def give_pool(self, min_count):
     pool_list = []
@@ -65,19 +70,21 @@ class Feature:
     note is a list of note objects
     :param notes: 
     '''
-    self.name = (note.note for note in notes)
+    self.name = [note.note for note in notes]
     self.notes = notes
+    self.phenotypes  = [notes]
+    # self.duration =[[note.duration for note in notes]]
     # self.duration = notes
-    # self.time = [time]
-    # self.count = 1
+    self.count = 1
 
   def add_phenotype(self, notes):
-    # if exist add count if new add  to list
-    time = (note.time for note in notes)
-    if time not in self.time:
-      self.time.append(time)
+    # add count if new add  to list if exist add to list
+    duration = [note.duration for note in notes]
+    if duration not in self.phenotypes:
+      self.count += 1
+      return self.phenotypes.append(notes)
     self.count += 1
-    return self.time.append(time)
+    return self.phenotypes.append(notes)
 
   def get_time(self, time):
     return time in self.time
