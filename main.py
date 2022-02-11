@@ -63,11 +63,11 @@ feature_pool.show_pool()
 #initliazaiton
 population = []
 for i in range(pop_num):
-    track = Track(compose(length, feature_pool))
-    music = Music(track)
+    track = Track([compose(length, feature_pool)])
+    music = Music([track])
     population.append(music)
 
-print(population[0].display())
+population[0].display()
   
 
 #loop of evoluation
