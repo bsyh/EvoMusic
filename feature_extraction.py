@@ -53,7 +53,7 @@ def compose(length, pool):
   while cur< length:
     
     x = random.choice(pool.feature_pool) #choice of feature
-    individual.append(x)
+    individual.append(x.notes)
     
     cur += len(x.notes)
     
