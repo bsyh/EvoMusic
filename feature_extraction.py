@@ -1,11 +1,11 @@
 import random
-from util import feature,feature_pool,note
+from util import Feature,Feature_pool,Note
 import mido
 from copycat import midi_read
 
 
 
-def containsPattern(feature_pool,note,time,low=3,up=5):
+def containsPattern(feature_pool,notes,low=3,up=5):
   '''
   
   :param feature_pool:  a pool to store all features extracted
@@ -18,10 +18,10 @@ def containsPattern(feature_pool,note,time,low=3,up=5):
   '''
   for m in range (low,up+1):
     i = 0
-    while i < len(note)-m+1:
-        p = tuple(note[i:i+m])
+    while i < len(notes)-m+1:
+        p = tuple(notes[i:i+m])
         # new_feature = feature(note[i:i+m],time[i:i+m])
-        feature_pool.new_feature(note[i:i+m],time[i:i+m])
+        feature_pool.new_feature(notes[i:i+m])
         # features_list.append(new_feature)
         # if p * k == arr[i:i+m*k]:
         #     return features
@@ -29,17 +29,17 @@ def containsPattern(feature_pool,note,time,low=3,up=5):
     
     # feature_pool.show_pool()
     # return dict(result)
-def make_pool(feature_dict,min_number=2):
-  '''
-  fuliter out pattern only appeatred less than min_number times
-  '''
-  pool = []
-  for item in feature_dict:
-    if feature_dict[item] >= min_number:
-      for i in range(feature_dict[item]):
-        pool.append(list(item))
-        
-  return pool
+# def make_pool(feature_dict,min_number=2):
+#   '''
+#   fuliter out pattern only appeatred less than min_number times
+#   '''
+#   pool = []
+#   for item in feature_dict:
+#     if feature_dict[item] >= min_number:
+#       for i in range(feature_dict[item]):
+#         pool.append(list(item))
+#         
+#   return pool
 def compose(duraiton, pool):
   '''
   generate a individual by picking from the pool, add up features 
@@ -86,7 +86,7 @@ def read_to_notes(filename):
   time = 0
   for i in range(len(input[0])):
     duration = input[1][i]
-    output.append(note(channel, input[0][i], velocity, time, duration))
+    output.append(Note(channel, input[0][i], velocity, time, duration))
     time += duration
   return output
     
