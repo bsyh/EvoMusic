@@ -120,8 +120,8 @@ class Note:
     print("Note", self.channel, self.note, self.velocity, self.tick)
 
 class Track:
-    def __init__(self):
-      self.note_list = []
+    def __init__(self,note_list=[]):
+      self.note_list = note_list
       self.size = 0
 
     def note_append(self, new_note):
@@ -129,8 +129,8 @@ class Track:
       self.size += 1
 
 class Music:
-    def __init__(self):
-      self.track_list = []
+    def __init__(self,track_list=[]):
+      self.track_list = track_list
       self.ticks_per_beat = 100
 
     def set_ticks_per_beat(self, ticks_per_beat):

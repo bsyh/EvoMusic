@@ -1,5 +1,5 @@
 import mido
-
+from util import *
 # blues/12barblues_ms.mid
 
 
@@ -60,7 +60,12 @@ feature_pool.show_pool()
 #initliazaiton
 population = []
 for i in range(pop_num):
-  population.append(compose(length, feature_pool))
+
+    track = Track([compose(length, feature_pool)])
+    music = Music(track)
+    population.append(music)
+
+print(population[0].display())
   
 
 #loop of evoluation
