@@ -36,6 +36,9 @@ roll = mid.get_roll()
 # draw piano roll by pyplot
 mid.draw_roll()
 
+
+
+
 #read input 1
 #read input 2
 
