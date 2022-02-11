@@ -1,3 +1,4 @@
+aa="test"
 from mido.midifiles import MidiTrack
 from mido import MidiFile
 # from roll import MidiFile
