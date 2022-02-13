@@ -93,15 +93,10 @@ class Feature:
     return self.note
 
 class Note:
-  def __init__(self):
-    self.channel = 0
-    self.note = [-1]
-    self.velocity = 127
-    self.start_time = 0
-    self.duration = 0
 
 
-  def __init__(self, channel, note, velocity, start_time, duration):
+
+  def __init__(self, channel=0, note=[-1], velocity=128, start_time=0, duration=100):
     '''
     with argument
     :param channel: 
