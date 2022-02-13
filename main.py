@@ -1,31 +1,10 @@
-import mido
 from util import *
-# blues/12barblues_ms.mid
 
 
 from mido.midifiles import MidiTrack
-from roll import MidiFile
+from mido import MidiFile
 from mido import Message
 
-# with MidiFile() as mid:
-#     track = MidiTrack()
-#     mid.tracks.append(track)
-#     track.append(Message('program_change', program=12, time=0))
-#     track.append(Message('note_on', note=64, velocity=64, time=32))
-#     track.append(Message('note_off', note=64, velocity=127, time=60))
-#
-#     track.append(Message('note_on', note=89, velocity=64, time=60))
-#     track.append(Message('note_off', note=89, velocity=127, time=200))
-#
-#     track.append(Message('note_on', note=90, velocity=64, time=200))
-#     track.append(Message('note_off', note=90, velocity=127, time=3000))
-#
-#     track.append(Message('note_off', note=64, velocity=127, time=3200))
-#
-#     mid.save('new_song.mid')
-
-# mid = MidiFile("blues/12barblues_ms.mid")
-# mid = MidiFile("new_song.mid")
 
 # get the list of all events
 # events = mid.get_events()
@@ -65,7 +44,13 @@ for i in range(pop_num):
     population.append(music)
 
 population[0].display()
-  
+
+save_path = "my_music.mid"
+population[0].save_midi(save_path)
+mid2 = MidiFile(save_path)
+# from midi_visualize import midi_visualize
+# midi_visualize(save_path)
+
 
 #loop of evoluation
 
