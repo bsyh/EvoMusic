@@ -33,7 +33,7 @@ print(source2)
 feature_pool = Feature_pool()
 #extract featurse
 
-containsPattern(feature_pool, source1)
+containsPattern(feature_pool, source1,tick1)
 feature_pool.show_pool()
 
 
