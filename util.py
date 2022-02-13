@@ -32,7 +32,7 @@
 # 
 #     def display(self):
 #         print("Note", self.channel, self.note, self.velocity, self.tick)
-
+from mido import Message, MetaMessage, MidiFile, MidiTrack
 class Feature_pool:
 
   def __init__(self, pool=[]):
@@ -151,11 +151,19 @@ class Music:
             print(" | ",end='')
         print("")
 
+        print("Duration  :", end="")
+        for j in range(len(self.track_list[i].feature_list)):
+            for k in self.track_list[i].feature_list[j]:
+                for z in k:
+                    print(z.duration, end=' ')
+                print(" | ", end='')
+        print("")
+
 
         print("")
 
-    # TODO
-    """
+
+
     def save_midi(self,save_path = 'new_song.mid'):
         mid = MidiFile()
         for track_index in range(len(self.track_list)):
@@ -163,23 +171,25 @@ class Music:
             track = MidiTrack()
             mid.tracks.append(track)
             # track.append(Message('program_change', program=12, time=0))
-            for note_index in range(self.track_list[track_index].size):
+            for feature_index in range(self.track_list[track_index].size):
                 # print("有track",track_index)
-                note = self.track_list[track_index].note_list[note_index]
-                velocity = note.velocity
-                note_note = note.note
-                tick = note.tick
-                channel = note.channel
-                if note.type:
+                for note in self.track_list[track_index].feature_list[feature_index]:
+                    print("hahaha",note_note)
+                    velocity = note.velocity
+                    note_note = note.note
+                    start_time = note.start_time
+                    duration = note.duration
+                    channel = note.channel
                     for i in note_note:
-                        track.append(Message('note_on', channel=channel, note=i, velocity=velocity, time=tick))
-                else:
+                        track.append(Message('note_on', channel=channel, note=i, velocity=velocity, time=0))
+                    gap = duration
                     for i in note_note:
-                        track.append(Message('note_off', channel=channel, note=i, velocity=velocity, time=tick))
+                        track.append(Message('note_off', channel=channel, note=i, velocity=velocity, time=gap))
+                        gap = 0
         track.append(MetaMessage('end_of_track', time=0))
         mid.ticks_per_beat=self.ticks_per_beat
         mid.save(save_path)
-        """
+
 
 
 if __name__ == "__main__":
