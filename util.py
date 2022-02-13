@@ -171,21 +171,21 @@ class Music:
             track = MidiTrack()
             mid.tracks.append(track)
             # track.append(Message('program_change', program=12, time=0))
-            for feature_index in range(self.track_list[track_index].size):
+            for feature_index in range(len(self.track_list[track_index].feature_list)):
                 # print("有track",track_index)
-                for note in self.track_list[track_index].feature_list[feature_index]:
-                    print("hahaha",note_note)
-                    velocity = note.velocity
-                    note_note = note.note
-                    start_time = note.start_time
-                    duration = note.duration
-                    channel = note.channel
-                    for i in note_note:
-                        track.append(Message('note_on', channel=channel, note=i, velocity=velocity, time=0))
-                    gap = duration
-                    for i in note_note:
-                        track.append(Message('note_off', channel=channel, note=i, velocity=velocity, time=gap))
-                        gap = 0
+                for note_list in self.track_list[track_index].feature_list[feature_index]:
+                    for note in note_list:
+                        velocity = note.velocity
+                        note_note = note.note
+                        start_time = note.start_time
+                        duration = note.duration
+                        channel = note.channel
+                        for i in note_note:
+                            track.append(Message('note_on', channel=channel, note=i, velocity=velocity, time=0))
+                        gap = duration
+                        for i in note_note:
+                            track.append(Message('note_off', channel=channel, note=i, velocity=velocity, time=gap))
+                            gap = 0
         track.append(MetaMessage('end_of_track', time=0))
         mid.ticks_per_beat=self.ticks_per_beat
         mid.save(save_path)
