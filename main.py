@@ -25,7 +25,6 @@ from util import Feature,Feature_pool
 #read input 1
 pop_num = 5
 length =30
-save_path = '/choices'
 source1,tick1 = read_to_notes('2.mid')
 
 #read input 2
@@ -51,7 +50,7 @@ for i in range(pop_num):
 population[0].display()
 
 population[0].ticks_per_beat = 480
-save_path = "my_music.mid"
+save_path = "choices/1.mid"
 population[0].save_midi(save_path)
 mid2 = MidiFile(save_path)
 
@@ -81,8 +80,8 @@ population[1].display()
 inloop = True
 while True:
   # output 1，2 TODO switch to evaluated best as competcotr
-  population[0].save_midi(save_path)
-  population[1].save_midi(save_path)
+  population[0].save_midi("choices/my_music1.mid")
+  population[1].save_midi("choices/my_music2.mid")
 
   # receive choice
   desicion = input('I prefer___,anything else for roll')  #reroll to provide another set of choice
@@ -94,7 +93,7 @@ while True:
   elif int(desicion) == 2:
     #give 2more weighs
     print('2 is better')
-
+    
     break
 
 #modify evaulation
