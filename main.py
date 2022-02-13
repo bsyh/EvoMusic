@@ -27,7 +27,7 @@ from util import Feature,Feature_pool
 #read input 1
 pop_num = 5
 length =30
-source1 = read_to_notes('2.mid')
+source1 = read_to_notes('12barblues_ms.mid')
 #read input 2
 source2 = read_to_notes('2.mid')
 
@@ -62,7 +62,7 @@ midi_visualize(save_path)
 #parent selection 
 
 #crossover
-
+one_pt_crossover(population[0],population[1])
 #mutation
 
 
