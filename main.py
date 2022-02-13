@@ -1,5 +1,5 @@
 from util import *
-
+from midi_visualize import midi_visualize
 
 from mido.midifiles import MidiTrack
 from mido import MidiFile
@@ -54,7 +54,7 @@ population[0].ticks_per_beat = 480
 save_path = "my_music.mid"
 population[0].save_midi(save_path)
 mid2 = MidiFile(save_path)
-from midi_visualize import midi_visualize
+
 midi_visualize(save_path)
 
 
@@ -87,11 +87,11 @@ while True:
   # receive choice
   desicion = input('I prefer___,anything else for roll')  #reroll to provide another set of choice
 
-  if desicion == 1:
+  if int(desicion) == 1:
     #give 1 more weighs
     print('1 is better')
     break
-  elif desicion == 2:
+  elif int(desicion) == 2:
     #give 2more weighs
     print('2 is better')
 
