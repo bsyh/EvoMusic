@@ -32,6 +32,7 @@
 # 
 #     def display(self):
 #         print("Note", self.channel, self.note, self.velocity, self.tick)
+import random
 from mido import Message, MetaMessage, MidiFile, MidiTrack
 class Feature_pool:
 
@@ -170,7 +171,7 @@ class Music:
                 # print("有track",track_index)
                 for note_list in self.track_list[track_index].feature_list[feature_index]:
                     for note in note_list:
-                        velocity = note.velocity
+                        velocity = 127
                         note_note = note.note
                         start_time = note.start_time
                         duration = note.duration
@@ -185,7 +186,64 @@ class Music:
         mid.ticks_per_beat=self.ticks_per_beat
         mid.save(save_path)
 
+'''
+Crossover
+'''
+
+
+def one_pt_crossover(music_1, music_2, max_distance=4, length_limit=100):
+    '''
+
+    :param parent_1: individual 1
+    :param parent_2: individual 1
+    :param max_distance:  the distance between the crossover points on two individuals
+    :param length_limit: the maximum length of path
+    :return:
+    '''
+
+    # get length of parents
+    parent_1 = music_1.track_list[0].feature_list
+    parent_2 = music_2.track_list[0].feature_list
+    length_1 = len(parent_1)
+    length_2 = len(parent_2)
+    shorter_length = min(length_1, length_2)
+
+    if random.randint(0, 1):
+        # 0.5 of probability the distance is positive
+        distance = random.randint(0, max_distance)
+    else:
+        # 0.5 of probability the distance is positive
+        distance = -1 * random.randint(0, max_distance)
+
+    # the crossover point of parent 1
+    point_1 = random.randint(0, shorter_length)
+    # the crossover point of parent 2
+    point_2 = point_1 + distance
+    point_2 = max(min(length_2, point_2), 0)
+
+    # get segments of parents cut by the crossover point
+    segmentation_1_1 = parent_1[:point_1]
+    segmentation_1_2 = parent_1[point_1:]
+
+    segmentation_2_1 = parent_2[:point_2]
+    segmentation_2_2 = parent_2[point_2:]
+
+    offspring_1 = segmentation_1_1 + segmentation_2_2
+    offspring_2 = segmentation_2_1 + segmentation_1_2
+
+    # recombine to get new offspring, with maximum length limit length_limit
+    offspring_1 = offspring_1[:length_limit]
+    offspring_2 = offspring_2[:length_limit]
+
+    music_1.track_list[0] = Track(offspring_1)
+    music_2.track_list[0] = Track(offspring_2)
+
+    return music_1.track_list[0], music_2.track_list[0]
+
 
 
 if __name__ == "__main__":
+
+
+
     pass

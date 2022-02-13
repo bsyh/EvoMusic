@@ -33,8 +33,8 @@ for i, track in enumerate(mid.tracks):
 my_music.display()
 
 save_name = "my_music.mid"
-# my_music.save_midi(save_name)
-# midi_visualize(save_name)
+my_music.save_midi(save_name)
+midi_visualize(save_name)
 
 
 # mid = MidiFile(save_name)
