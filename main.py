@@ -24,15 +24,15 @@ from util import Feature,Feature_pool
 #read input 1
 pop_num = 5
 length =30
-source1 = read_to_notes('2.mid')
+source1,tick1 = read_to_notes('2.mid')
 #read input 2
-source2 = read_to_notes('2.mid')
+source2,tick2 = read_to_notes('2.mid')
 print(source2)
 #init pool
 feature_pool = Feature_pool()
 #extract featurse
 
-containsPattern(feature_pool, source1)
+containsPattern(feature_pool, source1,tick1)
 feature_pool.show_pool()
 
 
