@@ -25,6 +25,7 @@ from util import Feature,Feature_pool
 #read input 1
 pop_num = 5
 length =30
+save_path = '/choices'
 source1,tick1 = read_to_notes('2.mid')
 
 #read input 2
@@ -80,8 +81,8 @@ population[1].display()
 inloop = True
 while True:
   # output 1，2 TODO switch to evaluated best as competcotr
-  choice1 = music.save_midi(population[0])
-  choice2 = music.save_midi(population[1])
+  population[0].save_midi(save_path)
+  population[1].save_midi(save_path)
 
   # receive choice
   desicion = input('I prefer___,anything else for roll')  #reroll to provide another set of choice
