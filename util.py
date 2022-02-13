@@ -240,7 +240,16 @@ def one_pt_crossover(music_1, music_2, max_distance=4, length_limit=100):
 
     return music_1.track_list[0], music_2.track_list[0]
 
+'''
+Mutation
+'''
 
+def reverse_mutation(music, track_index=0, feature_index=0):
+    orig = music.track_list[track_index].feature_list[0][feature_index]
+    print(orig)
+    orig.reverse()
+    music.track_list[track_index].feature_list[0][feature_index] = orig
+    return orig
 
 if __name__ == "__main__":
 
