@@ -217,10 +217,10 @@ def one_pt_crossover(music_1, music_2, max_distance=4, length_limit=100):
         distance = -1 * random.randint(0, max_distance)
 
     # the crossover point of parent 1
-    point_1 = random.randint(0, shorter_length)
+    point_1 = random.randint(1, shorter_length)
     # the crossover point of parent 2
     point_2 = point_1 + distance
-    point_2 = max(min(length_2, point_2), 0)
+    point_2 = max(min(length_2, point_2), 1)
 
     # get segments of parents cut by the crossover point
     segmentation_1_1 = parent_1[:point_1]
@@ -247,6 +247,7 @@ Mutation
 
 def reverse_mutation(music, track_index=0, feature_index=0):
     orig = music.track_list[track_index].feature_list[0][feature_index]
+    print(orig)
     orig.reverse()
     music.track_list[track_index].feature_list[0][feature_index] = orig
     return orig
