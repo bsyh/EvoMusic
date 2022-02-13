@@ -96,7 +96,7 @@ class Note:
   def __init__(self):
     self.channel = 0
     self.note = [-1]
-    self.velocity = 0
+    self.velocity = 127
     self.start_time = 0
     self.duration = 0
 
