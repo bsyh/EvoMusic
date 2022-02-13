@@ -4,6 +4,7 @@ import mido
 https://www.bilibili.com/read/cv9432479'''
 def midi_read(filename):
   mid = mido.MidiFile(filename)  # 返回midi对象
+  tick= mid.ticks_per_beat
   hang = 0  # 行
   lie = 0  # 列
   note_list_in = []  # 先初步建立一个序列，用于存储一行音符数据。
@@ -57,5 +58,5 @@ def midi_read(filename):
 
   for i in note_list_ex_sort:
     print(i)
-  return note_list_ex_sort, time_list
+  return [note_list_ex_sort, time_list],tick
 

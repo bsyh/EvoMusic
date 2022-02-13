@@ -39,7 +39,7 @@ class Feature_pool:
   def __init__(self, pool=[]):
     self.feature_pool = pool
 
-  def new_feature(self, notes):
+  def new_feature(self, notes,tick):
     '''
     if it exists add to a feature if it not exist add it to a new feature object
     :param notes:  a list of note objects 
@@ -51,7 +51,7 @@ class Feature_pool:
       if item.name == name:
         return item.add_phenotype(notes)
     # not exist , new note
-    new_feature = Feature(notes)
+    new_feature = Feature(notes,tick)
     self.feature_pool.append(new_feature)
 
   def show_pool(self):
@@ -66,7 +66,7 @@ class Feature_pool:
     return pool_list
 
 class Feature:
-  def __init__(self, notes):
+  def __init__(self, notes,tick):
     '''
     note is a list of note objects
     :param notes: 
@@ -76,6 +76,7 @@ class Feature:
     self.phenotypes  = [notes]
     # self.duration =[[note.duration for note in notes]]
     # self.duration = notes
+    self.tick = tick
     self.count = 1
 
   def add_phenotype(self, notes):

@@ -5,7 +5,7 @@ from copycat import midi_read
 
 
 
-def containsPattern(feature_pool,notes,low=3,up=5):
+def containsPattern(feature_pool,notes,tick,low=3,up=5):
   '''
   
   :param feature_pool:  a pool to store all features extracted
@@ -21,7 +21,7 @@ def containsPattern(feature_pool,notes,low=3,up=5):
     while i < len(notes)-m+1:
         p = tuple(notes[i:i+m])
         # new_feature = feature(note[i:i+m],time[i:i+m])
-        feature_pool.new_feature(notes[i:i+m])
+        feature_pool.new_feature(notes[i:i+m],tick)
         # features_list.append(new_feature)
         # if p * k == arr[i:i+m*k]:
         #     return features
@@ -80,7 +80,8 @@ def read_to_notes(filename):
   :param output: 
   :return: 
   '''
-  input = midi_read(filename)
+  input,tick = midi_read(filename)
+  print('??',tick)
   output = []
   channel = 0
   velocity = 0
@@ -89,7 +90,7 @@ def read_to_notes(filename):
     duration = input[1][i]
     output.append(Note(channel, input[0][i], velocity, time, duration))
     time += duration
-  return output
+  return output,tick
     
 #   
 #   
