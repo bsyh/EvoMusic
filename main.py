@@ -59,9 +59,18 @@ midi_visualize(save_path)
 #parent selection 
 
 #crossover
+population[0].display()
+population[1].display()
+print("Cross-over:")
 one_pt_crossover(population[0],population[1])
 #mutation
-
+population[0].display()
+population[1].display()
+print("Reverse mutated:")
+reverse_mutation(population[0],track_index=0,feature_index=0)
+reverse_mutation(population[1],track_index=0,feature_index=0)
+population[0].display()
+population[1].display()
 
 
 
