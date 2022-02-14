@@ -33,6 +33,7 @@
 #     def display(self):
 #         print("Note", self.channel, self.note, self.velocity, self.tick)
 import random
+
 from mido import Message, MetaMessage, MidiFile, MidiTrack
 class Feature_pool:
 
@@ -172,7 +173,7 @@ class Music:
                 # print("有track",track_index)
                 for note_list in self.track_list[track_index].feature_list[feature_index]:
                     for note in note_list:
-                        velocity = velocity
+                        velocity = note.velocity  #TODO shold be feature.velcoty
                         note_note = note.note
                         start_time = note.start_time
                         duration = note.duration
