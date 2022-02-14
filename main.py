@@ -97,7 +97,7 @@ while True:
     break
 
 #modify evaulation
-
+fake_evaulation(population,desicion)
 
 
 #end loop
@@ -105,3 +105,4 @@ while True:
 
 #output final result
 
+population[1].save_midi("choices/final.mid")
