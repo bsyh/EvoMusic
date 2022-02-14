@@ -20,5 +20,5 @@ pip install -r requirements.txt
 
 ### Sample execution
 
-python main.py
+run main.py
 
