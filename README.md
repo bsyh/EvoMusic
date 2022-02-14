@@ -3,7 +3,9 @@ generate music using EA
 
 
 fearture_extraction.py: inialitzaiton
+
 util.py: evolutionary algorithm body
+
 main.py: call EA functions and generate mid files
 
 
