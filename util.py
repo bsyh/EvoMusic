@@ -177,7 +177,7 @@ class Music:
                         note_note = note.note
                         start_time = note.start_time
                         duration = note.duration
-                        channel = note.channel
+                        channel = 12
                         for i in note_note:
                             track.append(Message('note_on', channel=channel, note=i, velocity=velocity, time=0))
                         gap = duration
@@ -248,7 +248,7 @@ Mutation
 
 def reverse_mutation(music, track_index=0, feature_index=0):
     orig = music.track_list[track_index].feature_list[0][feature_index]
-    print(orig)
+    # print(orig)
     orig.reverse()
     music.track_list[track_index].feature_list[0][feature_index] = orig
     return orig
