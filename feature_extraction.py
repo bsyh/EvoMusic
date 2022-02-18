@@ -86,7 +86,9 @@ def read_to_notes(filename):
   channel = 0
   velocity = 0
   time = 0
+  print(len(input[0]),len(input[1]))
   for i in range(len(input[0])):
+    
     duration = input[1][i]
     output.append(Note(channel, input[0][i], velocity, time, duration))
     time += duration

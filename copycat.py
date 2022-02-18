@@ -4,6 +4,7 @@ import mido
 https://www.bilibili.com/read/cv9432479'''
 def midi_read(filename):
   mid = mido.MidiFile(filename)  # 返回midi对象
+  print(mid)
   tick= mid.ticks_per_beat
   hang = 0  # 行
   lie = 0  # 列
@@ -18,7 +19,7 @@ def midi_read(filename):
     for msg in track:
       print(msg)
       # 说明是按下了action就置1
-      if msg.type == "note_on":
+      if msg.type == "note_on" and msg.velocity!=0:
         action = 1
         # 连着两个都按下了,就是和弦,在这个序列中添加一个音符.
         if action == action_last:
@@ -58,5 +59,6 @@ def midi_read(filename):
 
   for i in note_list_ex_sort:
     print(i)
+    
   return [note_list_ex_sort, time_list],tick
 
