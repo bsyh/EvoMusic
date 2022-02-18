@@ -25,10 +25,10 @@ from util import Feature,Feature_pool
 #read input 1
 pop_num = 5
 length =30
-source1,tick1 = read_to_notes('1.mid')
+source1,tick1 = read_to_notes('2.mid')
 
 #read input 2
-source2,tick2 = read_to_notes('1.mid')
+source2,tick2 = read_to_notes('2.mid')
 
 #init pool
 feature_pool = Feature_pool()
