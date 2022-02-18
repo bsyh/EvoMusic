@@ -25,10 +25,10 @@ from util import Feature,Feature_pool
 #read input 1
 pop_num = 5
 length =30
-source1,tick1 = read_to_notes('2.mid')
+source1,tick1 = read_to_notes('1.mid')
 
 #read input 2
-source2,tick2 = read_to_notes('2.mid')
+source2,tick2 = read_to_notes('1.mid')
 print(source2)
 
 #init pool
@@ -48,8 +48,8 @@ for i in range(pop_num):
     population.append(music)
 
 population[0].display()
-
-population[0].ticks_per_beat = 480
+print (tick1,'----')
+population[0].ticks_per_beat = tick1
 save_path = "choices/1.mid"
 population[0].save_midi(save_path)
 mid2 = MidiFile(save_path)
