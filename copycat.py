@@ -4,7 +4,6 @@ import mido
 https://www.bilibili.com/read/cv9432479'''
 def midi_read(filename):
   mid = mido.MidiFile(filename)  # 返回midi对象
-  print(mid)
   tick= mid.ticks_per_beat
   hang = 0  # 行
   lie = 0  # 列
@@ -17,7 +16,7 @@ def midi_read(filename):
   for i, track in enumerate(mid.tracks):
     print('Track {}: {}'.format(i, track.name))
     for msg in track:
-      print(msg)
+    
       # 说明是按下了action就置1
       if msg.type == "note_on" and msg.velocity!=0:
         action = 1
@@ -56,9 +55,9 @@ def midi_read(filename):
     note_list_in = list(note_list_in_set)  # 去重后,把集合转换成序列.
     note_list_in = sorted(note_list_in)  # 排序
     note_list_ex_sort.append(note_list_in)  # 排完序后的二维音符序列.
-
-  for i in note_list_ex_sort:
-    print(i)
-    
+  # 
+  # for i in note_list_ex_sort:
+  #   print(i)
+  #   
   return [note_list_ex_sort, time_list],tick
 

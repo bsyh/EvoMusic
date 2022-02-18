@@ -16,6 +16,7 @@ def containsPattern(feature_pool,notes,tick,low=3,up=5):
 
   :return: none
   '''
+  print('++++++++Feature Extraction+++++++++++')
   for m in range (low,up+1):
     i = 0
     while i < len(notes)-m+1:
@@ -81,12 +82,11 @@ def read_to_notes(filename):
   :return: 
   '''
   input,tick = midi_read(filename)
-  print('??',tick)
+  print('Tick_per_beat=',tick)
   output = []
   channel = 0
   velocity = 0
   time = 0
-  print(len(input[0]),len(input[1]))
   for i in range(len(input[0])):
     
     duration = input[1][i]
