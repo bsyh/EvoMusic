@@ -35,6 +35,16 @@
 import random
 
 from mido import Message, MetaMessage, MidiFile, MidiTrack
+import rules.test_rule
+# 
+# def first_rule(music):
+#   if music.fitness ==0:
+#     return 1
+#   else:
+#     return 0
+rule = [rules.test_rule.first_rule]
+
+
 class Feature_pool:
 
   def __init__(self, pool=[]):
@@ -130,6 +140,8 @@ class Music:
     def __init__(self,track_list=[]):
       self.track_list = track_list
       self.ticks_per_beat = 100
+      self.fitness = 0
+      self.evaluate(rule)
 
     def set_ticks_per_beat(self, ticks_per_beat):
       self.ticks_per_beat = ticks_per_beat
@@ -159,7 +171,10 @@ class Music:
 
 
         print("")
-
+    
+    def evaluate(self,rule_pool):
+      for rule in rule_pool:
+        self.fitness += rule(self)
 
 
     def save_midi(self,save_path = 'new_song.mid'):
