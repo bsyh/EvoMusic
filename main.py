@@ -47,7 +47,8 @@ for i in range(pop_num):
     population.append(music)
 
 population[0].display()
-population[0].ticks_per_beat = tick1
+for item in population:# TODO
+  item.ticks_per_beat = tick1
 save_path = "choices/1.mid"
 population[0].save_midi(save_path)
 mid2 = MidiFile(save_path)
@@ -80,6 +81,9 @@ while True:
   # output 1，2 TODO switch to evaluated best as competcotr
   population[0].save_midi("choices/my_music1.mid")
   population[1].save_midi("choices/my_music2.mid")
+  population[2].save_midi("choices/my_music3.mid")
+
+
 
   # receive choice
   desicion = input('I prefer___,anything else for roll')  #reroll to provide another set of choice
@@ -87,15 +91,18 @@ while True:
   if int(desicion) == 1:
     #give 1 more weighs
     print('1 is better')
+    desicion =population[0]
     break
   elif int(desicion) == 2:
     #give 2more weighs
     print('2 is better')
+    desicion =population[1]
+
     
     break
 
 #modify evaulation
-fake_evaulation(population,desicion)
+evaulation(feature_pool,desicion)
 
 
 #end loop

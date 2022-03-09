@@ -58,6 +58,6 @@ def midi_read(filename):
   # 
   # for i in note_list_ex_sort:
   #   print(i)
-  #   
+  
   return [note_list_ex_sort, time_list],tick
 
