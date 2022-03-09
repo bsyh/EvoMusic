@@ -252,7 +252,13 @@ def reverse_mutation(music, track_index=0, feature_index=0):
     orig.reverse()
     music.track_list[track_index].feature_list[0][feature_index] = orig
     return orig
-def fake_evaulation(pool,choice):
+def evaulation(pool,choice):
+  '''
+  alter the pool base on choice, by adding duplicate in it
+  :param pool: 
+  :param choice: 
+  :return: 
+  '''
   pass
 if __name__ == "__main__":
 

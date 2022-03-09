@@ -84,9 +84,9 @@ def read_to_notes(filename):
   input,tick = midi_read(filename)
   print('Tick_per_beat=',tick)
   output = []
-  channel = 0
   velocity = 0
   time = 0
+  channel =0
   for i in range(len(input[0])):
     
     duration = input[1][i]
