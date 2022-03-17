@@ -1,7 +1,5 @@
-#test rule    
 
 
-from EvoMusic.util import Music
 
 def first_rule(music):
   if music.fitness ==0:
