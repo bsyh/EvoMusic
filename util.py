@@ -275,8 +275,28 @@ def evaulation(pool,choice):
   :return: 
   '''
   pass
+
+def feedmax(pop):
+  '''
+  TODO yapi
+  返回n个分最高的
+  
+  :param pop: 
+  :return: 
+  '''
+  for item in pop:
+  
+  print(best1,best2)
+def original():
+  '''
+  把原版变成一个个体，保留全部顺序
+  TODO yapi
+  :return: music 
+  '''
 if __name__ == "__main__":
 
-
-
-    pass
+  a= Music
+  b = Music
+  pop = [a,b]
+  feedmax(pop)
+  
