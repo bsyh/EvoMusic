@@ -35,10 +35,10 @@
 import random
 
 from mido import Message, MetaMessage, MidiFile, MidiTrack
-from rule import first_rule,macro_pitch_order,micro_pitch_order
+from rule import rule
 
 
-rule = [[first_rule,1],[macro_pitch_order,1],[micro_pitch_order,1]]
+
 
 
 class Feature_pool:
@@ -167,9 +167,13 @@ class Music:
 
         print("")
     
-    def evaluate(self,rule_pool,choice):
+    def evaluate(self,rule_pool,choice,weight=None):
+      if weight is None:
+          weight = [1 for _ in range(len(rule_pool))]
+      n=0
       for rule in rule_pool:
-        self.fitness += rule[0](self,choice) * rule[1]
+        self.fitness += rule(self,choice) * weight[n]
+        n+=1
 
 
     def save_midi(self,save_path = 'new_song.mid'):
@@ -262,7 +266,7 @@ def reverse_mutation(music, track_index=0, feature_index=0):
     orig.reverse()
     music.track_list[track_index].feature_list[0][feature_index] = orig
     return orig
-def evaulation(pop,choice):
+def evaluation(pop,choice,weight=None):
   '''
   alter the pool base on choice, by adding duplicate in it
   :param pool: 
@@ -270,7 +274,7 @@ def evaulation(pop,choice):
   :return: 
   '''
   for item in pop:
-    item.evaluate(rule,choice)
+    item.evaluate(rule,choice,weight)
     print(item.fitness)
 
 def feedmax(pop):

@@ -1,6 +1,5 @@
 
 
-
 def first_rule(music1,music2):
   if music1.fitness ==0:
     return 1
@@ -61,3 +60,8 @@ def levenshtein_feature(music1, music2):
   result = -1*m[-1][-1]
 
   return result
+
+
+
+
+rule = [first_rule,macro_pitch_order,micro_pitch_order]

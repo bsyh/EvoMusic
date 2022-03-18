@@ -1,4 +1,4 @@
-from util import Track,Music,one_pt_crossover,reverse_mutation,evaulation
+from util import Track,Music,one_pt_crossover,reverse_mutation,evaluation
 from midi_visualize import midi_visualize
 
 from mido.midifiles import MidiTrack
@@ -100,7 +100,8 @@ while True:
     break
 
 #modify evaulation
-evaulation(population,desicion)
+weight = [1, 4, 1]
+evaluation(population,desicion,weight)
 
 
 #end loop
