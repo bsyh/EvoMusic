@@ -138,7 +138,6 @@ class Music:
       self.track_list = track_list
       self.ticks_per_beat = 100
       self.fitness = 0
-      # self.evaluate(rule)
 
     def set_ticks_per_beat(self, ticks_per_beat):
       self.ticks_per_beat = ticks_per_beat
@@ -284,6 +283,7 @@ def feedmax(pop):
   pop = sorted(pop, key=lambda item: item.fitness, reverse=True)
   
   print(pop[0],pop[1])
+
 def original():
   '''
   把原版变成一个个体，保留全部顺序
