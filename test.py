@@ -39,8 +39,12 @@ original=population[0]
 n=0
 for item in population:
     print(n)
-    print("macro:",macro_pitch_order(original,item))
-    print("micro:",micro_pitch_order(original,item))
+    macro = macro_pitch_order(original,item)
+    micro = micro_pitch_order(original,item)
+    print("macro:",macro)
+    print("micro:",micro)
+    fitness = macro*4 + micro
+    print("fitness:", fitness)
     n += 1
 # a="abcdefg"
 # b="zzzzzzzzzz"
