@@ -19,7 +19,7 @@ def micro_pitch_order(music1,music2):
   return levenshtein(a, b)
 
 def macro_pitch_order(music1,music2):
-  return -levenshtein_feature(music1, music2)
+  return levenshtein_feature(music1, music2)
 
 def frequcncy(music):
   '''
