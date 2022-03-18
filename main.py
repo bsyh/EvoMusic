@@ -1,4 +1,4 @@
-from util import *
+from util import Track,Music,one_pt_crossover,reverse_mutation,evaulation
 from midi_visualize import midi_visualize
 
 from mido.midifiles import MidiTrack
@@ -34,7 +34,6 @@ source2,tick2 = read_to_notes('2.mid')
 feature_pool = Feature_pool()
 
 #extract featurse
-
 containsPattern(feature_pool, source1,tick1)
 feature_pool.show_pool()
 
@@ -102,7 +101,7 @@ while True:
     break
 
 #modify evaulation
-evaulation(feature_pool,desicion)
+evaulation(population,desicion)
 
 
 #end loop

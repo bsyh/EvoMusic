@@ -1,8 +1,8 @@
 
 
 
-def first_rule(music):
-  if music.fitness ==0:
+def first_rule(music1,music2):
+  if music1.fitness ==0:
     return 1
   else:
     return 
@@ -16,7 +16,7 @@ def micro_pitch_order(music1,music2):
   return 0
 
 def macro_pitch_order(music1,music2):
-  return levenshtein_feature(music1, music2)
+  return -levenshtein_feature(music1, music2)
 
 def frequcncy(music):
   '''

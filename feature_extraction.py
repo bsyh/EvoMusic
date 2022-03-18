@@ -30,21 +30,12 @@ def containsPattern(feature_pool,notes,tick,low=3,up=5):
     
     # feature_pool.show_pool()
     # return dict(result)
-# def make_pool(feature_dict,min_number=2):
-#   '''
-#   fuliter out pattern only appeatred less than min_number times
-#   '''
-#   pool = []
-#   for item in feature_dict:
-#     if feature_dict[item] >= min_number:
-#       for i in range(feature_dict[item]):
-#         pool.append(list(item))
-#         
-#   return pool
+
 def compose(length, pool):
   '''
   generate a individual by picking from the pool, add up features 
   entill duration is stafisted( could be a bit longer)
+  
   :param duraiton: 
   :param pool: 
   :return: 

@@ -35,11 +35,10 @@
 import random
 
 from mido import Message, MetaMessage, MidiFile, MidiTrack
-from rule import first_rule
+from rule import first_rule,macro_pitch_order
 
 
-
-# rule = [first_rule]
+rule = [first_rule,macro_pitch_order]
 
 
 class Feature_pool:
@@ -168,9 +167,9 @@ class Music:
 
         print("")
     
-    def evaluate(self,rule_pool):
+    def evaluate(self,rule_pool,choice):
       for rule in rule_pool:
-        self.fitness += rule(self)
+        self.fitness += rule(self,choice)
 
 
     def save_midi(self,save_path = 'new_song.mid'):
@@ -263,14 +262,16 @@ def reverse_mutation(music, track_index=0, feature_index=0):
     orig.reverse()
     music.track_list[track_index].feature_list[0][feature_index] = orig
     return orig
-def evaulation(pool,choice):
+def evaulation(pop,choice):
   '''
   alter the pool base on choice, by adding duplicate in it
   :param pool: 
   :param choice: 
   :return: 
   '''
-  pass
+  for item in pop:
+    item.evaluate(rule,choice)
+    print(item.fitness)
 
 def feedmax(pop):
   '''
@@ -284,13 +285,23 @@ def feedmax(pop):
   
   print(pop[0],pop[1])
 
-def original():
+def original(notes,tick,pool):
   '''
   把原版变成一个个体，保留全部顺序
   输入原本音乐文件，
-  TODO yapi
+  尽量把pool里的feature带入形成一个feature 版的original TODO yapi
   :return: music 
   '''
+  origin_pool = []
+  start = 0
+  cur = 0
+  
+        
+    
+  
+  
+  
+  
 if __name__ == "__main__":
   a= Music()
   b = Music()
