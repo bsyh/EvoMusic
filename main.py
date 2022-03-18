@@ -23,7 +23,7 @@ from feature_extraction import read_to_notes,containsPattern,compose
 from util import Feature,Feature_pool,original
 
 #read input 1
-pop_num = 500
+pop_num = 5
 length =30
 source1,tick1 = read_to_notes('2.mid')
 org = original(source1, tick1) 
@@ -102,7 +102,7 @@ while True:
 
 #modify evaulation
 weight = [1, 4, 1]
-fitness_list=evaluation(population,org,weight)
+
 fitness_list_1=evaluation(population,desicion,weight)
 fitness_list_2=evaluation(population,org,weight)
 fitness_list=[]
