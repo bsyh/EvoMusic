@@ -35,14 +35,6 @@
 import random
 
 from mido import Message, MetaMessage, MidiFile, MidiTrack
-import rules.test_rule
-# 
-# def first_rule(music):
-#   if music.fitness ==0:
-#     return 1
-#   else:
-#     return 0
-rule = [rules.test_rule.first_rule]
 
 
 class Feature_pool:
@@ -141,7 +133,6 @@ class Music:
       self.track_list = track_list
       self.ticks_per_beat = 100
       self.fitness = 0
-      self.evaluate(rule)
 
     def set_ticks_per_beat(self, ticks_per_beat):
       self.ticks_per_beat = ticks_per_beat
@@ -276,17 +267,7 @@ def evaulation(pool,choice):
   '''
   pass
 
-def feedmax(pop):
-  '''
-  TODO yapi
-  返回n个分最高的
-  
-  :param pop: 
-  :return: 
-  '''
-  for item in pop:
-  
-  print(best1,best2)
+
 def original():
   '''
   把原版变成一个个体，保留全部顺序

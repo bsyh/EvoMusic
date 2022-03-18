@@ -1,47 +1,44 @@
-from mido.midifiles import MidiTrack
-from mido import MidiFile
-# from roll import MidiFile
-from mido import Message
-from midi_visualize import midi_visualize
-from util import Music,Note,Track
+from util import *
+from rule import *
+
+from feature_extraction import read_to_notes, containsPattern, compose
+from util import Feature, Feature_pool
+
+# read input 1
+pop_num = 5
+length = 30
+source1, tick1 = read_to_notes('2.mid')
+
+# read input 2
+source2, tick2 = read_to_notes('2.mid')
+
+# init pool
+feature_pool = Feature_pool()
+
+# extract featurse
+
+containsPattern(feature_pool, source1, tick1)
+feature_pool.show_pool()
+
+# initliazaiton
+population = []
+for i in range(pop_num):
+    track = Track([compose(length, feature_pool)])
+    music = Music([track])
+    population.append(music)
+
+n=0
+for item in population:  # TODO
+    item.ticks_per_beat = tick1
+    save_path = "choices/"+str(n)+".mid"
+    population[n].save_midi(save_path)
+    n+=1
 
 
-mid = MidiFile("12barblues_ms.mid")
-my_music = Music()
-my_music.set_ticks_per_beat(mid.ticks_per_beat)
-for i, track in enumerate(mid.tracks):
-    print('Track {}: {}'.format(i, track.name))
-    new_track = Track()
-    for msg in track:
-        print(msg)
-        if msg.type == "note_off" or msg.type == "note_on":
-            channel = int(msg.channel)
-            note = [int(msg.note)]
-            velocity = int(msg.velocity)
-            tick = int(msg.time)
-            if msg.type == "note_off":
-                newNote = Note(channel,note,velocity,tick,False)
-            else:
-                newNote = Note(channel,note,velocity,tick,True)
+original=population[0]
+for item in population:
+    macro_pitch_order(original,item)
 
-            new_track.note_append(newNote)
-
-
-    my_music.append_track(new_track)
-
-
-my_music.display()
-
-save_name = "my_music.mid"
-my_music.save_midi(save_name)
-midi_visualize(save_name)
-
-
-# mid = MidiFile(save_name)
-# my_music = Music()
-# print(save_name)
-# for i, track in enumerate(mid.tracks):
-#     print('Track {}: {}'.format(i, track.name))
-#     new_track = Track()
-#     for msg in track:
-#         print(msg)
+# a="abcdefg"
+# b="zzzzzzzzzz"
+# print(levenshtein(a, b))
