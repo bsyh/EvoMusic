@@ -96,7 +96,6 @@ while True:
     #give 2more weighs
     print('2 is better')
     desicion =population[1]
-
     
     break
 

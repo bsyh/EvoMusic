@@ -38,7 +38,7 @@ from mido import Message, MetaMessage, MidiFile, MidiTrack
 from rule import first_rule,macro_pitch_order,micro_pitch_order
 
 
-rule = [first_rule,macro_pitch_order,micro_pitch_order]
+rule = [[first_rule,1],[macro_pitch_order,1],[micro_pitch_order,1]]
 
 
 class Feature_pool:
@@ -169,7 +169,7 @@ class Music:
     
     def evaluate(self,rule_pool,choice):
       for rule in rule_pool:
-        self.fitness += rule(self,choice)
+        self.fitness += rule[0](self,choice) * rule[1]
 
 
     def save_midi(self,save_path = 'new_song.mid'):
