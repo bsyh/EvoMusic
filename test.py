@@ -36,9 +36,12 @@ for item in population:  # TODO
 
 
 original=population[0]
+n=0
 for item in population:
-    macro_pitch_order(original,item)
-
+    print(n)
+    print("macro:",macro_pitch_order(original,item))
+    print("micro:",micro_pitch_order(original,item))
+    n += 1
 # a="abcdefg"
 # b="zzzzzzzzzz"
 # print(levenshtein(a, b))
