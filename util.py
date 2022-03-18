@@ -273,9 +273,11 @@ def evaluation(pop,choice,weight=None):
   :param choice: 
   :return: 
   '''
+  fitness=[]
   for item in pop:
     item.evaluate(rule,choice,weight)
-    print(item.fitness)
+    fitness.append(item.fitness)
+  return fitness
 
 def feedmax(pop):
   '''

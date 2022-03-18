@@ -23,7 +23,7 @@ from feature_extraction import read_to_notes,containsPattern,compose
 from util import Feature,Feature_pool
 
 #read input 1
-pop_num = 5
+pop_num = 500
 length =30
 source1,tick1 = read_to_notes('2.mid')
 
@@ -101,8 +101,10 @@ while True:
 
 #modify evaulation
 weight = [1, 4, 1]
-evaluation(population,desicion,weight)
-
+fitness_list=evaluation(population,desicion,weight)
+fitness_list.remove(max(fitness_list))
+print(max(fitness_list))
+print(min(fitness_list))
 
 #end loop
 
