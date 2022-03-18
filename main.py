@@ -104,13 +104,13 @@ while True:
 weight = [1, 4, 1]
 
 fitness_list_1=evaluation(population,desicion,weight)
-fitness_list_2=evaluation(population,org,weight)
-fitness_list=[]
-for i in range(len(fitness_list_1)):
-  fitness_list.append(fitness_list_1[i]+fitness_list_2[i])
-fitness_list.remove(max(fitness_list))
-print(max(fitness_list))
-print(min(fitness_list))
+# fitness_list_2=evaluation(population,org,weight)
+# fitness_list=[]
+# for i in range(len(fitness_list_1)):
+#   fitness_list.append(fitness_list_1[i]+fitness_list_2[i])
+# fitness_list.remove(max(fitness_list))
+# print(max(fitness_list))
+# print(min(fitness_list))
 
 #end loop
 
