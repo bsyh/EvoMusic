@@ -35,10 +35,10 @@
 import random
 
 from mido import Message, MetaMessage, MidiFile, MidiTrack
-from rule import first_rule,macro_pitch_order
+from rule import first_rule,macro_pitch_order,micro_pitch_order
 
 
-rule = [first_rule,macro_pitch_order]
+rule = [first_rule,macro_pitch_order,micro_pitch_order]
 
 
 class Feature_pool:
