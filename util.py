@@ -291,16 +291,17 @@ def feedmax(pop):
   
   print(pop[0],pop[1])
 
-def original(notes,tick,pool):
+def original(notes,tick):
   '''
   把原版变成一个个体，保留全部顺序
   输入原本音乐文件，
   尽量把pool里的feature带入形成一个feature 版的original TODO yapi
   :return: music 
   '''
-  origin_pool = []
-  start = 0
-  cur = 0
+  music_form = Music()
+  for note in notes:
+    music_form.track_list.append(note)
+  print(music_form.track_list,'?????')    
   
         
     

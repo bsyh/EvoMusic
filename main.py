@@ -20,13 +20,13 @@ from mido import Message
 # provide choice
 
 from feature_extraction import read_to_notes,containsPattern,compose
-from util import Feature,Feature_pool
+from util import Feature,Feature_pool,original
 
 #read input 1
 pop_num = 500
 length =30
 source1,tick1 = read_to_notes('2.mid')
-
+org = original(source1, tick1)
 #read input 2
 source2,tick2 = read_to_notes('2.mid')
 
