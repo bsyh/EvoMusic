@@ -301,8 +301,7 @@ def original(notes,tick):
   music_form = Music()
   for note in notes:
     music_form.track_list.append(note)
-  print(music_form.track_list,'?????')    
-  
+  return music_form  
         
     
   
