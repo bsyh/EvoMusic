@@ -26,7 +26,7 @@ from util import Feature,Feature_pool,original
 pop_num = 500
 length =30
 source1,tick1 = read_to_notes('2.mid')
-org = original(source1, tick1)
+org = original(source1, tick1) 
 #read input 2
 source2,tick2 = read_to_notes('2.mid')
 
@@ -96,12 +96,13 @@ while True:
     #give 2more weighs
     print('2 is better')
     desicion =population[1]
+    print(org)
     
     break
 
 #modify evaulation
 weight = [1, 4, 1]
-fitness_list=evaluation(population,desicion,weight)
+fitness_list=evaluation(population,org,weight)
 fitness_list.remove(max(fitness_list))
 print(max(fitness_list))
 print(min(fitness_list))

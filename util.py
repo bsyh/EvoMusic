@@ -299,8 +299,10 @@ def original(notes,tick):
   :return: music 
   '''
   music_form = Music()
-  for note in notes:
-    music_form.track_list.append(note)
+  music_form.track_list.append(Track())
+  music_form.track_list[0].feature_list = [[]]
+
+  music_form.track_list[0].feature_list[0].append(notes)
   return music_form  
         
     
