@@ -26,7 +26,7 @@ from util import Feature,Feature_pool,original
 pop_num = 5
 length =30
 source1,tick1 = read_to_notes('2.mid')
-original(source1, tick1)
+org = original(source1, tick1)
 #read input 2
 source2,tick2 = read_to_notes('2.mid')
 
