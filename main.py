@@ -161,9 +161,7 @@ while inloop:
     # print(max(fitness_list))
     # print(min(fitness_list))
     print('Gen',gen)
-    gen +=1
-  else:
-    gen +=1
+  gen +=1
   
   
 
