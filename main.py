@@ -205,21 +205,21 @@ def loop(choice):
     pickle.dump(population, population_file)
         
         
-      # modify fitness base on selection
-      # modify evaulation
-      # fitness_list_1 = evaluation(population, desicion, weight)
-      # # weight = [1, 0, 1]
-      # # fitness_list_2=evaluation(population,org,weight)
-      # fitness_list = []
-      # for i in range(len(fitness_list_1)):
-      #   # fitness_list.append(fitness_list_1[i]+fitness_list_2[i])
-      #   fitness_list.append(fitness_list_1[i])
-      # final, secondbest = feedmax(population)
-  
-      # print(best_index)
-      # print(max(fitness_list))
-      # print(min(fitness_list))
-      print('Gen',gen)
+    # modify fitness base on selection
+    # modify evaulation
+    # fitness_list_1 = evaluation(population, desicion, weight)
+    # # weight = [1, 0, 1]
+    # # fitness_list_2=evaluation(population,org,weight)
+    # fitness_list = []
+    # for i in range(len(fitness_list_1)):
+    #   # fitness_list.append(fitness_list_1[i]+fitness_list_2[i])
+    #   fitness_list.append(fitness_list_1[i])
+    # final, secondbest = feedmax(population)
+
+    # print(best_index)
+    # print(max(fitness_list))
+    # print(min(fitness_list))
+    print('Gen',gen)
     gen +=1
     
     
