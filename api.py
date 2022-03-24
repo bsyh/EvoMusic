@@ -22,3 +22,11 @@ import pickle
 
 from feature_extraction import read_to_notes,containsPattern,compose
 from util import Feature,Feature_pool,original
+
+
+def initialize(some_para_settings):
+    pass
+
+def evolve(decision):
+    pass
+
