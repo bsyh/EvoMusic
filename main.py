@@ -66,9 +66,9 @@ mid2 = MidiFile(save_path)
 #crossover
 
 
-
-inloop = True
+global counter
 counter = 0
+global gen
 gen = 0
 def initlazation():
   weight = read_weight()
@@ -105,7 +105,7 @@ def initlazation():
   mid2 = MidiFile(save_path)
 
   with open('population.list', 'wb') as population_file:
-  pickle.dump(population,population_file)
+    pickle.dump(population,population_file)
   return population
 
 
