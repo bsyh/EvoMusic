@@ -96,12 +96,12 @@ while inloop:
   # receive choice
   desicion = input('I prefer___,\"s\" to stop,\"r\" roll')  #reroll to provide another set of choice
   
-  if int(desicion) == 1:
+  if desicion == '1':
     #give 1 more weighs
     print('1 is better')
     desicion =a
     
-  elif int(desicion) == 2:
+  elif desicion == '2':
     #give 2more weighs
     print('2 is better')
     desicion =b
