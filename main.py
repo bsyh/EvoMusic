@@ -14,7 +14,7 @@ from mido import Message
 
 # draw piano roll by pyplot
 # mid.draw_roll()
-
+from rule_weight import set_weight, read_weight
 
 
 # provide choice
@@ -101,10 +101,15 @@ while True:
     break
 
 #modify evaulation
-weight = [1, 4, 1]
+
+
+set_weight([1, 4, 1])
+weight = read_weight()
 
 fitness_list_1=evaluation(population,desicion,weight)
-weight = [1, 0, 0.01]
+set_weight([1, 0, 0.01])
+weight = read_weight()
+
 fitness_list_2=evaluation(population,org,weight)
 fitness_list=[]
 for i in range(len(fitness_list_1)):
