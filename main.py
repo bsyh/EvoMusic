@@ -15,7 +15,7 @@ from mido import Message
 # draw piano roll by pyplot
 # mid.draw_roll()
 from rule_weight import set_weight, read_weight
-
+import pickle
 
 # provide choice
 
