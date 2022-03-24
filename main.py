@@ -25,10 +25,10 @@ from util import Feature,Feature_pool,original
 #read input 1
 pop_num = 500
 length =30
-source1,tick1 = read_to_notes('2.mid')
+source1,tick1 = read_to_notes('12barblues_ms.mid')
 org = original(source1, tick1) 
 #read input 2
-source2,tick2 = read_to_notes('2.mid')
+source2,tick2 = read_to_notes('12barblues_ms.mid')
 
 #init pool
 feature_pool = Feature_pool()
@@ -104,14 +104,16 @@ while True:
 weight = [1, 4, 1]
 
 fitness_list_1=evaluation(population,desicion,weight)
-weight = [1, 0, 1]
+weight = [1, 0, 0.01]
 fitness_list_2=evaluation(population,org,weight)
 fitness_list=[]
 for i in range(len(fitness_list_1)):
-  fitness_list.append(fitness_list_1[i]+fitness_list_2[i])
-fitness_list.remove(max(fitness_list))
-print(max(fitness_list))
-print(min(fitness_list))
+  fitness_list.append(fitness_list_1[i]*0+fitness_list_2[i])
+best_index = fitness_list.index(min(fitness_list))
+population[best_index].save_midi("choices/worst_2.mid")
+# print(best_index)
+# print(max(fitness_list))
+# print(min(fitness_list))
 
 #end loop
 
