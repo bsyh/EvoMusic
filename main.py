@@ -125,8 +125,16 @@ while inloop:
     
   elif desicion == 'r':
     #roll again
-    #stop loop
-    pass
+
+    # set weight to zeros, random evolve
+    old_weight = weight
+    set_weight([0,0,0])
+
+
+    for g in range(100):
+      pass #TODO reroll here
+    set_weight(old_weight)
+
   else:
     print('wrong input')
 
