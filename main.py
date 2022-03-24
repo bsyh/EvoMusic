@@ -65,26 +65,34 @@ from util import Feature,Feature_pool,original
 
 #crossover
 
+#gen counter
 
-
-def initlazation():
-  weight = read_weight()
+def initlazation(file1,file2):
   dir = 'choices'
   for f in os.listdir(dir):
     os.remove(os.path.join(dir, f))
   # read input 1
   pop_num = 500
   length = 30
-  source1, tick1 = read_to_notes('12barblues_ms.mid')
+  try:
+    source1, tick1 = read_to_notes(file1)
+  except:
+    source1, tick1 = read_to_notes('12barblues_ms.mid')
+
   org = original(source1, tick1)
   # read input 2
-  source2, tick2 = read_to_notes('12barblues_ms.mid')
+  try:
+    source2, tick2 = read_to_notes(file2)
+  except:
+    source2, tick2 = read_to_notes('12barblues_ms.mid')
 
   # init pool
   feature_pool = Feature_pool()
 
   # extract featurse
   containsPattern(feature_pool, source1, tick1)
+  containsPattern(feature_pool, source2, tick2)
+
   feature_pool.show_pool()
 
   # initliazaiton
@@ -94,17 +102,14 @@ def initlazation():
     music = Music([track])
     population.append(music)
 
-  population[0].display()
   for item in population:  # TODO
     item.ticks_per_beat = tick1
   save_path = "choices/1.mid"
   population[0].save_midi(save_path)
   mid2 = MidiFile(save_path)
   
-  return population
-
   with open('population.list', 'wb') as population_file:
-  pickle.dump(population,population_file)
+    pickle.dump(population,population_file)
   return population
 
 
