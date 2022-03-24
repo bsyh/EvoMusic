@@ -67,7 +67,7 @@ from util import Feature,Feature_pool,original
 
 #gen counter
 
-def initlazation(file1,file2):
+def initlazation(file1='12barblues_ms.mid',file2='12barblues_ms.mid'):
   dir = 'choices'
   for f in os.listdir(dir):
     os.remove(os.path.join(dir, f))
@@ -219,7 +219,7 @@ def loop(choice):
       # print(best_index)
       # print(max(fitness_list))
       # print(min(fitness_list))
-      print('Gen',gen)
+    print('Gen',gen)
     gen +=1
     
     
@@ -231,4 +231,4 @@ def loop(choice):
 
 if __name__=="__main__":
   population=initlazation()
-  loop()
+  # loop()
