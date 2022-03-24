@@ -291,7 +291,7 @@ def evaluation(pop,choice,weight=None):
     fitness.append(item.fitness)
   return fitness
 
-def feedmax(pop):
+def feedmax(pop,num = 2):
   '''
   TODO yapi
   返回2个分最高的
@@ -302,6 +302,9 @@ def feedmax(pop):
   pop = sorted(pop, key=lambda item: item.fitness, reverse=True)
   
   # print(pop[0],pop[1])
+  if num == 3:
+    return pop[0], pop[1],pop[2]
+
   return pop[0],pop[1]
 
 def original(notes,tick):
