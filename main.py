@@ -249,4 +249,4 @@ def loop(choice="r"):
 
 if __name__=="__main__":
   population=initlazation()
-  # loop()
+  loop()
