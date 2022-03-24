@@ -104,13 +104,23 @@ def initlazation():
   population[0].save_midi(save_path)
   mid2 = MidiFile(save_path)
 
-def loop(population,choice):
+  with open('population.list', 'wb') as population_file:
+  pickle.dump(population,population_file)
+  return population
+
+
+def loop(desicion):
   '''
   all parameters,
   :return: new population,final_product
   '''
-  
-while inloop:
+
+
+  with open('population.list', 'rb') as population_file:
+    population = pickle.load(population_file)
+
+  inloop = True
+  while inloop:
   #TODO
   # population[0].display()
   # population[1].display()
