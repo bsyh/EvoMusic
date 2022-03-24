@@ -141,7 +141,7 @@ def loop(choice="r"):
   inloop = True
 
 
-  with open('population', 'rb') as population_file:
+  with open('population.list', 'rb') as population_file:
     population = pickle.load(population_file)
 
 
