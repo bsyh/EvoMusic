@@ -266,6 +266,18 @@ def reverse_mutation(music, track_index=0, feature_index=0):
     orig.reverse()
     music.track_list[track_index].feature_list[0][feature_index] = orig
     return orig
+
+def exchange_mutation(music, track_index=0, feature_index=0):
+    orig = music.track_list[track_index].feature_list[0][feature_index]
+    #print(orig)
+
+    pos = random.choices([x for x in range(len(orig))], k=2)
+    pos1, pos2 = pos[0], pos[1]
+    orig[pos1], orig[pos2] = orig[pos2], orig[pos1]
+    music.track_list[track_index].feature_list[0][feature_index] = orig
+    return orig
+
+
 def evaluation(pop,choice,weight=None):
   '''
   alter the pool base on choice, by adding duplicate in it
