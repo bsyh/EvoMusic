@@ -67,13 +67,12 @@ from util import Feature,Feature_pool,original
 
 #gen counter
 
-def initlazation(file1,file2):
+def initlazation(file1,file2,pop_num = 500,length = 30):
   dir = 'choices'
   for f in os.listdir(dir):
     os.remove(os.path.join(dir, f))
   # read input 1
-  pop_num = 500
-  length = 30
+
   try:
     source1, tick1 = read_to_notes(file1)
   except:
@@ -113,14 +112,14 @@ def initlazation(file1,file2):
   return population
 
 
-def loop(choice):
+def loop(choice="r"):
   '''
   all parameters,
   :return: new population,final_product
   '''
-  gen = 0
+  global counter, gen
   inloop = True
-  counter = 0
+
 
   with open('population', 'rb') as population_file:
     population = pickle.load(population_file)
@@ -194,9 +193,8 @@ def loop(choice):
         old_weight = weight
         set_weight([0,0,0])
     
-    
-        for g in range(100):
-          pass #TODO reroll here
+        loop("1")
+
         set_weight(old_weight)
     
       else:
