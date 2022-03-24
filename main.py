@@ -108,7 +108,7 @@ def initlazation():
   return population
 
 
-def loop(desicion):
+def loop(choice):
   '''
   all parameters,
   :return: new population,final_product
@@ -116,6 +116,10 @@ def loop(desicion):
   gen = 0
   inloop = True
   counter = 0
+
+  with open('population', 'rb') as population_file:
+    population = pickle.load(population_file)
+
 
   while inloop:
     #TODO
@@ -132,7 +136,7 @@ def loop(desicion):
   
   
     if gen%50 == 0:
-      wight = 
+      weight = read_weight()
       #user selection
       # output 1，2 TODO switch to evaluated best as competcotr
       a,b= feedmax(population)
