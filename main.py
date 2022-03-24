@@ -1,10 +1,10 @@
-from util import Track,Music,one_pt_crossover,reverse_mutation,evaluation
+from util import Track,Music,one_pt_crossover,reverse_mutation,evaluation,feedmax
 from midi_visualize import midi_visualize
-
+import shutil
+import os
 from mido.midifiles import MidiTrack
 from mido import MidiFile
 from mido import Message
-
 
 # get the list of all events
 # events = mid.get_events()
@@ -22,6 +22,10 @@ from rule_weight import set_weight, read_weight
 from feature_extraction import read_to_notes,containsPattern,compose
 from util import Feature,Feature_pool,original
 
+weight = read_weight()
+dir = 'choices'
+for f in os.listdir(dir):
+    os.remove(os.path.join(dir, f))
 #read input 1
 pop_num = 500
 length =30
@@ -76,53 +80,74 @@ population[1].display()
 
 
 inloop = True
-while True:
+counter = 0
+while inloop:
   # output 1，2 TODO switch to evaluated best as competcotr
-  population[0].save_midi("choices/my_music1.mid")
-  population[1].save_midi("choices/my_music2.mid")
-  population[2].save_midi("choices/my_music3.mid")
+  a,b= feedmax(population)
+  counter +=1
+  a.save_midi("choices/my_music1.mid")
+  counter +=1
+  b.save_midi("choices/my_music2.mid")
+
+  # population[2].save_midi("choices/my_music3.mid")
 
 
 
   # receive choice
-  desicion = input('I prefer___,anything else for roll')  #reroll to provide another set of choice
-
+  desicion = input('I prefer___,\"s\" to stop,\"r\" roll')  #reroll to provide another set of choice
+  
   if int(desicion) == 1:
     #give 1 more weighs
     print('1 is better')
-    desicion =population[0]
-    break
+    desicion =a
+    
   elif int(desicion) == 2:
     #give 2more weighs
     print('2 is better')
-    desicion =population[1]
-    print(org)
+    desicion =b
     
+  elif desicion == 's':
+    #stop loop
+    inloop = False
+    # output final result
+    # modify evaulation
+    fitness_list_1 = evaluation(population, desicion, weight)
+    # weight = [1, 0, 1]
+    # fitness_list_2=evaluation(population,org,weight)
+    fitness_list = []
+    for i in range(len(fitness_list_1)):
+      # fitness_list.append(fitness_list_1[i]+fitness_list_2[i])
+      fitness_list.append(fitness_list_1[i])
+    final, secondbest = feedmax(population)
+    final.save_midi("choices/final.mid")
+    inloop = False
     break
+    
+  elif desicion == 'r':
+    #roll again
+    #stop loop
+    pass
+  else:
+    print('wrong input')
 
-#modify evaulation
+  # set_weight([1, 4, 1])
+  weight = read_weight()
+
+  fitness_list_1 = evaluation(population, desicion, weight)
+  # set_weight([1, 0, 0.01])
+  weight = read_weight()
+
+  # fitness_list_2=evaluation(population,org,weight)
+  fitness_list = []
+  for i in range(len(fitness_list_1)):
+    # fitness_list.append(fitness_list_1[i]*0+fitness_list_2[i])
+    fitness_list.append(fitness_list_1[i] * 0)
+
+  best_index = fitness_list.index(min(fitness_list))
+  population[best_index].save_midi("choices/worst_2.mid")
+  # print(best_index)
+  # print(max(fitness_list))
+  # print(min(fitness_list))
 
 
-set_weight([1, 4, 1])
-weight = read_weight()
 
-fitness_list_1=evaluation(population,desicion,weight)
-set_weight([1, 0, 0.01])
-weight = read_weight()
-
-fitness_list_2=evaluation(population,org,weight)
-fitness_list=[]
-for i in range(len(fitness_list_1)):
-  fitness_list.append(fitness_list_1[i]*0+fitness_list_2[i])
-best_index = fitness_list.index(min(fitness_list))
-population[best_index].save_midi("choices/worst_2.mid")
-# print(best_index)
-# print(max(fitness_list))
-# print(min(fitness_list))
-
-#end loop
-
-
-#output final result
-
-population[1].save_midi("choices/final.mid")
