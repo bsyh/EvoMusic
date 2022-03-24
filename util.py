@@ -301,7 +301,7 @@ def feedmax(pop):
   '''
   pop = sorted(pop, key=lambda item: item.fitness, reverse=True)
   
-  print(pop[0],pop[1])
+  # print(pop[0],pop[1])
   return pop[0],pop[1]
 
 def original(notes,tick):
