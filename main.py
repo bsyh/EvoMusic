@@ -66,8 +66,15 @@ from util import Feature,Feature_pool,original
 #crossover
 
 #gen counter
+global counter,gen
+counter = 0
+gen = 0
 
 def initlazation(file1='12barblues_ms.mid',file2='12barblues_ms.mid'):
+  global counter
+  counter= 0
+  global gen 
+  gen= 0
   dir = 'choices'
   for f in os.listdir(dir):
     os.remove(os.path.join(dir, f))
@@ -110,7 +117,19 @@ def initlazation(file1='12barblues_ms.mid',file2='12barblues_ms.mid'):
   
   with open('population.list', 'wb') as population_file:
     pickle.dump(population,population_file)
-  return population
+
+  weight = read_weight()
+  # user selection
+  # output 1，2 TODO switch to evaluated best as competcotr
+  a, b,c = feedmax(population,num=3)
+  a.save_midi("choices/my_music" + str(counter) + ".mid")
+  counter +=1
+  b.save_midi("choices/my_music." + str(counter) + "mid")
+  counter +=1
+  c.save_midi("choices/my_music." + str(counter) + "mid")
+  counter +=1
+  return population,a,b,c
+
 
 
 def loop(choice):
@@ -231,4 +250,4 @@ def loop(choice):
 
 if __name__=="__main__":
   population=initlazation()
-  loop()
+  # loop()
