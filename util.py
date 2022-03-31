@@ -172,7 +172,7 @@ class Music:
           weight = [1 for _ in range(len(rule_pool))]
       n=0
       for rule in rule_pool:
-        self.fitness += rule(self,choice) * weight[n]
+        self.fitness += rule(choice,self) * weight[n]
         n+=1
 
 
