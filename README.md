@@ -1,6 +1,5 @@
 # EvoMusic
 generate music using EA. 
-Algorithm reports [here](report.pdf)
 
 fearture_extraction.py: inialitzaiton
 
