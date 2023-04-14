@@ -22,3 +22,4 @@ pip install -r requirements.txt
 
 run main.py
 
+report [here](EvoMedley__Interactive_Music_Generator_with_Multi_song_Fusion.pdf)<br/>
